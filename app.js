@@ -2,11 +2,11 @@
 var bodyParser = require("body-parser"),
     mongoose = require("mongoose"),
     passport = require("passport"),
-    MongoDBStore = require('connect-mongodb-session'),
-    store = new MongoDBStore({
-        uri: "mongodb://frizzid:frizzid303@ds227939.mlab.com:27939/vlift",
-        databaseName: "vlift"
-    }),
+    // MongoDBStore = require('connect-mongodb-session'),
+    // store = new MongoDBStore({
+    //     uri: "mongodb://frizzid:frizzid303@ds227939.mlab.com:27939/vlift",
+    //     databaseName: "vlift"
+    // }),
     passportLocal = require("passport-local"),
     methodOverride = require("method-override"),
     flash = require("connect-flash"),
@@ -39,7 +39,7 @@ app.use(flash());
 // Passport Config
 app.use(require("express-session")({
     secret: "abc",
-    store: store,
+    // store: store,
     resave: false,
     saveUninitialized: false
 }));

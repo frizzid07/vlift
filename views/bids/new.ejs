@@ -1,0 +1,25 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row">
+        <div class="formStyle">
+            <h2 class="formTitle">Make a New Bid for <%= job.title %></h2>
+            <form action="/jobs/<%= job._id %>/bids" method="POST">
+                <div class="form-group">
+                    <input class="form-control form-control-lg" type="Number" name="bid[amount]" placeholder="Amount" min=1000 step=250>    
+                </div>
+                <div class="form-group">
+                    <input class="form-control form-control-lg" type="Number" name="bid[completed]" placeholder="Day(s) required to complete">    
+                </div>
+                <div class="form-group">
+                    <input class="form-control form-control-lg" type="Text" name="bid[description]" placeholder="Description">    
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-block btn-lg btn-dark" type="submit">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>

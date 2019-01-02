@@ -1,0 +1,31 @@
+<% include ../partials/header %>
+    
+    <div class="container">
+        <header class="jumbotron">
+            <div class="container">
+                <h1><i class="fas fa-user-md"></i> VLift: Customer-Professional Portal</h1>
+                <p>Here's a glance at a variety of freelance jobs</p>
+                <p>
+                    <a class="btn btn-lg btn-dark text-white" href="/jobs/new">Add a New Job</a>
+                </p>
+            </div>
+        </header>
+    
+        <div class="row">
+            <% jobs.forEach(function(job) { %>
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="img-thumbnail img-responsive">
+                        <img src="<%= job.image %>">
+                        <div class="caption">
+                            <h3><%= job.title %></h3>
+                            <p>
+                                <a href="/jobs/<%= job._id %>" class="btn btn-dark">More Info</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+
+<% include ../partials/footer %>

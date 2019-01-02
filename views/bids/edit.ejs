@@ -1,0 +1,25 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row">
+        <div class="formStyle">
+            <h2 class="formTitle">Edit Your Bid</h2>
+            <form action="/jobs/<%= job_id %>/bids/<%= bid._id %>?_method=PUT" method="POST">
+                <div class="form-group">
+                    <input class="form-control form-control-lg" type="number" name="bid[amount]" value="<%= bid.amount %>" placeholder="Amount" min=1 step=1>
+                </div>
+                <div class="form-group">
+                    <input class="form-control form-control-lg" type="number" name="bid[completed]" value="<%= bid.completed %>" placeholder="Day(s) required to complete" min=1 step=1>
+                </div>
+                <div class="form-group">
+                    <input class="form-control form-control-lg" type="text" name="bid[description]" value="<%= bid.description %>" placeholder="Description">
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-block btn-lg btn-dark" type="submit">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>

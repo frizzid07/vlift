@@ -1,0 +1,49 @@
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.img-thumbnail img {
+    max-height: 100%;
+    width: 100%;
+}
+
+.img-thumbnail {
+    padding: 0;
+    margin-bottom: 4%;
+}
+
+.img-thumbnail .caption-full {
+    padding: 1.5%;
+}
+
+.formStyle {
+    width: 35%;
+    margin: 0 auto;
+}
+
+.formTitle {
+    text-align: center;
+}
+
+.caption {
+    text-align: center;
+    padding: 1%;
+}
+
+.desc {
+    font-size: 1.35rem;
+}
+
+.line {
+    display: inline;
+}
+
+.navbar {
+    margin-bottom: 2.5%;
+    opacity: 0.8;
+}
+
+.card {
+    margin-bottom: 4%;
+}

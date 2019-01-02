@@ -1,0 +1,92 @@
+<% include ../partials/header %>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <div class="img-thumbnail">
+                    <img class="img-responsive" src="<%= job.image %>">
+                </div>
+                <div class="caption-full">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Details</h3>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="d-inline float-right"><%= job.created.toDateString() %></h3>
+                            <h2 class="d-inline"><%= job.title %></h2><hr>
+                            <p class="desc"><%= job.description %></p>
+                            <p><em>Posted by <%= job.author.username %></em></p>
+                            <% if(currentUser && job.author.id.equals(currentUser._id)) { %>
+                                <a href="/jobs/<%= job._id %>/edit" class="btn btn-warning">Edit</a>
+                                <form class="line" action="/jobs/<%= job._id %>?_method=DELETE" method="POST">
+                                    <button class="btn btn-danger">Delete</button>
+                                </form>
+                            <% } %>
+                        <% if(job.accepted) { %>
+                                <h3><em>Job already assigned!</em></h3>
+                                <% if(currentUser && job.author.id.equals(currentUser._id)) { %>
+                                    <form action="/jobs/<%= job._id %>/reject" class="line" method="POST">
+                                        <button class="btn btn-danger">Reject Bid</button>
+                                    </form>
+                                <% } %>
+                                </div>
+                            </div>
+                            <% } else {%>
+                                </div>
+                            </div>
+                            <div class="card text-black bg-light mb-3">
+                                <% if(currentUser && job.author.id.equals(currentUser._id)) { %>
+                                    <div class="card-header">
+                                        <h3>
+                                            Active Bids
+                                            <a class="btn btn-dark float-right" href="/jobs">View All Jobs</a>                                    
+                                        </h3>
+                                    </div>
+                                <% } else { %>
+                                    <div class="card-header">
+                                        <h3>
+                                            Active Bids
+                                            <a class="btn btn-success float-right" href="/jobs/<%= job._id %>/bids/new">Make a New Bid</a>
+                                        </h3>
+                                    </div>
+                                <% } %>
+                                <div class="card-body">
+                                    <% job.bids.forEach(function(bid) { %>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <strong><%= bid.author.username %></strong>
+                                                <span class="float-right"><%= bid.created.toDateString() %></span>
+                                                <p>
+                                                    <div>
+                                                        <h3>₹<%= bid.amount %></h3>
+                                                            <% if(currentUser && job.author.id.equals(currentUser._id)) { %>
+                                                                <div class="float-right line">
+                                                                    <form action="/jobs/<%= job._id %>/bids/<%= bid._id %>" method="POST">
+                                                                        <button class="btn btn-success">Accept Bid</button>
+                                                                    </form>
+                                                                </div>
+                                                            <% } %>
+                                                            <% if(currentUser && bid.author.id.equals(currentUser._id)) { %>
+                                                                <div class="float-right line">
+                                                                    <a class="btn btn-warning" href="/jobs/<%= job._id %>/bids/<%= bid._id %>/edit">Edit</a>
+                                                                    <form action="/jobs/<%= job._id %>/bids/<%= bid._id %>?_method=DELETE" class="line" method="POST">
+                                                                        <button class="btn btn-danger">Delete</button>
+                                                                    </form>
+                                                                </div>
+                                                            <% } %>
+                                                        <h4>To be completed in <%= bid.completed %> day(s)</h4>
+                                                        <p><%= bid.description %></p><hr>
+                                                    </div>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    <% }); %>
+                                </div>
+                            </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<% include ../partials/footer %>

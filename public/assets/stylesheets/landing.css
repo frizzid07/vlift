@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+
+body {
+    font-family: 'Lato', sans-serif;
+    background: url(https://images.pexels.com/photos/205316/pexels-photo-205316.png?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940) no-repeat center center fixed; 
+    background-size: cover;
+}
+
+#landing-header h1 {
+	font-weight: 700;
+	font-size: 3.5em;
+	color: black;
+	text-shadow: 0px 2px 3px rgba(0,0,0,0.3),
+				 0px 2px 5px rgba(0,0,0,0.3),
+				 0px 3px 5px rgba(0,0,0,0.2);
+}
+
+#landing-header {
+  z-index: 1;
+  position: relative;
+  text-align: center;
+  padding-top: 22vh;
+  left: -1%;
+}
+
+hr {
+	width: 20%;
+	border-top: 1px solid #f8f8f8;
+	border-bottom: 1px solid rgba(0,0,0,0.3);
+	text-shadow: 0px 4px 3px rgba(0,0,0,0.3),
+				 0px 8px 13px rgba(0,0,0,0.3),
+				 0px 18px 24px rgba(0,0,0,0.2);
+}
